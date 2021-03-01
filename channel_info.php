@@ -12,42 +12,62 @@
     </head>
     <body class="text-center">
         <h1 style="margin-top: 1rem; color: #C9D4D4">Channel Information</h1>
-        <div style="background-color: #1E1E1E">
         <table rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #C9D4D4">
             <tr>
+                <th>#</th>
                 <th>Site</th>
                 <th>ID</th>
                 <th>Title</th>
+                <th>Official</th>
                 <th>Count</th>
+                <th>Main owner</th>
+                <th>Last updated<br>(UTC+0)</th>
             </tr>
             <?php
                 require 'connect.php';
-                $query = "SELECT * FROM `channel_info`";
-                $cursor = $connect->prepare($query);
-                $cursor->execute();
-                $count = $cursor->rowCount();
-                $result = $cursor->fetchAll();
-                for ($i=0; $i<$count; $i++) {
-                    $site = $result[$i]['site'];
+                $query_total = "SELECT * FROM `channel_info`";
+                $cursor_total = $connect->prepare($query_total);
+                $cursor_total->execute();
+                $total = $cursor_total->rowCount();
+                $result_all = $cursor_total->fetchAll();
+                for ($i=0; $i<$total; $i++) {
+                    $id = $result_all[$i]['id'];
+                    $site = $result_all[$i]['site'];
                     if (preg_match('/\YT/i', $site)) {
                         $site_full = 'YouTube';
                     } elseif (preg_match('/\BI/i', $site)) {
                         $site_full = 'bilibili';
                     } elseif (preg_match('/\NC/i', $site)) {
                         $site_full = 'niconico';
+                    } elseif (preg_match('/\TW/i', $site)) {
+                        $site_full = 'Twitter';
                     } else {
                         $site_full = $site;
                     }
-                    $channel_id = $result[$i]['channel_id'];
-                    $channel_title = $result[$i]['channel_title'];
-                    $query2 = "SELECT COUNT(channel_id) FROM `video_info` WHERE `channel_id` = '$channel_id'";
-                    $cursor2 = $connect->prepare($query2);
-                    $cursor2->execute();
-                    $result2 = $cursor2->fetchColumn();
+                    $channel_id = $result_all[$i]['channel_id'];
+                    $channel_title = $result_all[$i]['channel_title'];
+                    $is_official = $result_all[$i]['is_official'];
+                    if ($is_official == 1) {
+                        $is_official_parse = 'Yes';
+                    } else {
+                        $is_official_parse = 'No';
+                    }
+                    $query_count = "SELECT COUNT(channel_id) FROM `video_info` WHERE `channel_id` = '$channel_id'";
+                    $cursor_count = $connect->prepare($query_count);
+                    $cursor_count->execute();
+                    $result_count = $cursor_count->fetchColumn();
+                    $owner = $result_all[$i]['user'];
+                    $query_updated = "SELECT `created_at` FROM `video_info` WHERE `channel_id` = '$channel_id' ORDER BY `created_at` DESC LIMIT 1";
+                    $cursor_updated = $connect->prepare($query_updated);
+                    $cursor_updated->execute();
+                    $result_updated = $cursor_updated->fetch()['created_at'];
                     echo '<tr>';
                         echo '<td>';
+                        echo $id;
+                        echo '</td>';
+                        echo '<td>';
                         echo $site_full;
-                        echo '</td>'; 
+                        echo '</td>';
                         echo '<td>';
                         echo $channel_id;
                         echo '</td>';                   
@@ -55,12 +75,20 @@
                         echo $channel_title;
                         echo '</td>';
                         echo '<td>';
-                        echo $result2;
+                        echo $is_official_parse;
                         echo '</td>';
+                        echo '<td>';
+                        echo $result_count;
+                        echo '</td>';
+                        echo '<td>';
+                        echo $owner;
+                        echo '</td>';
+                        echo '<td>';
+                        echo $result_updated;
+                        echo '</td>';                        
                     echo '</tr>';
                 }
             ?>
         </table>
-        </div>
     </body>
 </html>
