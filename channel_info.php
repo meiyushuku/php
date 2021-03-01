@@ -7,12 +7,11 @@
         <script src="sorttable.js"></script>
         <style type="text/css">
             /* Sortable tables */
-            table.sortable thead
-            {
-            background-color:#333333;
-            color:#DDDDDD;
-            font-weight: bold;
-            cursor: default;
+            table.sortable thead {
+                background-color:#333333;
+                color:#DDDDDD;
+                font-weight: bold;
+                cursor: default;
             }
         </style>
     </head>
@@ -20,7 +19,7 @@
         <h1 style="margin-top: 1rem; color: #C9D4D4">Channel Information</h1>
         <table class="sortable" width="75%" style="margin: 0 auto; text-align: center; color: #DDDDDD">
             <h6>
-                <tr>
+                <tr id="tr1" onmouseover="changeColor('tr1', 'over')" onmouseover="changeColor('tr1', 'out')">
                     <th>#</th>
                     <th>Site</th>
                     <th>ID</th>
@@ -70,18 +69,17 @@
                     $cursor_updated->execute();
                     $result_updated = $cursor_updated->fetch()['created_at'];
                     echo '<tr>';
-                        echo '<td>' . $id . '</td>';
-                        echo '<td>' . $site_full . '</td>';
-                        echo '<td>' . $channel_id . '</td>';
-                        echo '<td>' . $channel_title . '</td>';
-                        echo '<td>' . $is_official_parse . '</td>';
-                        echo '<td>' . $result_count . '</td>';
-                        echo '<td>' . $owner . '</td>';
-                        echo '<td>' . $result_updated . '</td>';                    
+                    echo '<td>' . $id . '</td>';
+                    echo '<td>' . $site_full . '</td>';
+                    echo '<td>' . $channel_id . '</td>';
+                    echo '<td>' . $channel_title . '</td>';
+                    echo '<td>' . $is_official_parse . '</td>';
+                    echo '<td>' . $result_count . '</td>';
+                    echo '<td>' . $owner . '</td>';
+                    echo '<td>' . $result_updated . '</td>';
                     echo '</tr>';
                 }
             ?>
         </table>
-        
     </body>
 </html>
