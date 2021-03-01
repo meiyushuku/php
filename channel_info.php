@@ -4,15 +4,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ふうちゃんマジ天使</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <style>
-            body {
-                background-color: #35363A
+        <script src="sorttable.js"></script>
+        <style type="text/css">
+            /* Sortable tables */
+            table.sortable thead
+            {
+            background-color:#35363A;
+            color:#C9D9D4;
+            font-weight: bold;
+            cursor: default;
             }
         </style>
     </head>
-    <body class="text-center">
+    <body class="text-center" style="background-color: #35363A">
         <h1 style="margin-top: 1rem; color: #C9D4D4">Channel Information</h1>
-        <table rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #C9D4D4">
+        <table class="sortable" rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #C9D9D4"> 
             <tr>
                 <th>#</th>
                 <th>Site</th>
