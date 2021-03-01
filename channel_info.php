@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <style>
             body {
-                background-color: #1E1E1E
+                background-color: #35363A
             }
         </style>
     </head>
@@ -62,30 +62,14 @@
                     $cursor_updated->execute();
                     $result_updated = $cursor_updated->fetch()['created_at'];
                     echo '<tr>';
-                        echo '<td>';
-                        echo $id;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $site_full;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $channel_id;
-                        echo '</td>';                   
-                        echo '<td>';
-                        echo $channel_title;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $is_official_parse;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $result_count;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $owner;
-                        echo '</td>';
-                        echo '<td>';
-                        echo $result_updated;
-                        echo '</td>';                        
+                        echo '<td>' . $id . '</td>';
+                        echo '<td>' . $site_full . '</td>';
+                        echo '<td>' . $channel_id . '</td>';
+                        echo '<td>' . $channel_title . '</td>';
+                        echo '<td>' . $is_official_parse . '</td>';
+                        echo '<td>' . $result_count . '</td>';
+                        echo '<td>' . $owner . '</td>';
+                        echo '<td>' . $result_updated . '</td>';                    
                     echo '</tr>';
                 }
             ?>
