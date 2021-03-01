@@ -9,16 +9,16 @@
             /* Sortable tables */
             table.sortable thead
             {
-            background-color:#35363A;
-            color:#C9D9D4;
+            background-color:#333333;
+            color:#DDDDDD;
             font-weight: bold;
             cursor: default;
             }
         </style>
     </head>
-    <body class="text-center" style="background-color: #35363A">
+    <body class="text-center" style="background-color: #222222">
         <h1 style="margin-top: 1rem; color: #C9D4D4">Channel Information</h1>
-        <table class="sortable" rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #C9D9D4"> 
+        <table class="sortable" rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #DDDDDD"> 
             <tr>
                 <th>#</th>
                 <th>Site</th>
