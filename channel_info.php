@@ -18,17 +18,19 @@
     </head>
     <body class="text-center" style="background-color: #222222">
         <h1 style="margin-top: 1rem; color: #C9D4D4">Channel Information</h1>
-        <table class="sortable" rules="rows" width="80%" style="margin: 0 auto; text-align: center; color: #DDDDDD"> 
-            <tr>
-                <th>#</th>
-                <th>Site</th>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Official</th>
-                <th>Count</th>
-                <th>Main owner</th>
-                <th>Last updated<br>(UTC+0)</th>
-            </tr>
+        <table class="sortable" width="75%" style="margin: 0 auto; text-align: center; color: #DDDDDD">
+            <h6>
+                <tr>
+                    <th>#</th>
+                    <th>Site</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Official</th>
+                    <th>Count</th>
+                    <th>Main owner</th>
+                    <th>Last updated<br>(UTC+0)</th>
+                </tr>
+            </h6>
             <?php
                 require 'connect.php';
                 $query_total = "SELECT * FROM `channel_info`";
@@ -80,5 +82,6 @@
                 }
             ?>
         </table>
+        
     </body>
 </html>
