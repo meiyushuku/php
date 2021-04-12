@@ -1,6 +1,6 @@
 <?php
 
-$json_file = file_get_contents('/volume1/confidential/confidential.json');
+$json_file = file_get_contents('/volume1/require/youtube_mirror/confidential.json');
 $json_data = json_decode($json_file, true);
 
 $host = $json_data['host'];
